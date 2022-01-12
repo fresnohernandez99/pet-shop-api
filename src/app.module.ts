@@ -10,8 +10,9 @@ import { Configuration } from "./config/config.keys";
 import { PersonModule } from "./modules/person/person.module";
 import { ShopModule } from "./modules/shop/shop.module";
 import { BreedModule } from "./modules/breed/breed.module";
-import { AnimalModule } from './modules/animal/animal.module';
-import { PetModule } from './modules/pet/pet.module';
+import { AnimalModule } from "./modules/animal/animal.module";
+import { PetModule } from "./modules/pet/pet.module";
+import { ImagesModule } from './modules/images/images.module';
 
 @Module({
 	controllers: [AppController],
@@ -26,7 +27,7 @@ import { PetModule } from './modules/pet/pet.module';
 		ShopModule,
 		AnimalModule,
 		PetModule,
-
+		ImagesModule,
 	],
 })
 export class AppModule {

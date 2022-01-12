@@ -45,6 +45,10 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Access
+http://localhost/api -> regular endpoints
+http://localhost/swagger -> Swagger dashboard
+
 ## Test
 
 ```bash

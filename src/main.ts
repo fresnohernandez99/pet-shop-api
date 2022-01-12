@@ -1,13 +1,12 @@
 import { NestFactory } from "@nestjs/core";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
-import { join } from "path";
 import { AppModule } from "./app.module";
+import express from "express";
+import { join } from "path";
 
 async function bootstrap() {
-	const app = await NestFactory.create<NestExpressApplication>(
-		AppModule,
-	  );
+	const app = await NestFactory.create<NestExpressApplication>(AppModule);
 	app.setGlobalPrefix("api");
 
 	const config = new DocumentBuilder()
@@ -18,8 +17,6 @@ async function bootstrap() {
 	const document = SwaggerModule.createDocument(app, config);
 	SwaggerModule.setup("swagger", app, document);
 
-	app.useStaticAssets(join(__dirname, '..', 'public'));
-	
 	await app.listen(AppModule.port);
 }
 bootstrap();
