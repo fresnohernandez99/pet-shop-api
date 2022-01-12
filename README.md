@@ -47,8 +47,8 @@ $ npm run start:prod
 ## Create DB using /sql/init-database.sql
 
 ## Access
-http://localhost/api -> regular endpoints
-http://localhost/swagger -> Swagger dashboard
+http://localhost:8000/api -> regular endpoints
+http://localhost:8000/swagger -> Swagger dashboard
 
 ## Test
 
