@@ -1,6 +1,7 @@
 import {
 	BadRequestException,
 	Injectable,
+	InternalServerErrorException,
 	NotFoundException,
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
@@ -42,15 +43,26 @@ export class PersonService {
 
 	async create(person: Person): Promise<Person> {
 		const repo = await getConnection().getRepository(Role);
-		const defaultRole = await repo.findOne({ where: { name: RoleType.GENERAL } });
+		const defaultRole = await repo.findOne({
+			where: { name: RoleType.GENERAL },
+		});
 		person.roles = [defaultRole];
 
 		const savedPerson: Person = await this._personRepository.save(person);
 		return savedPerson;
 	}
 
-	async update(id: number, person: Person): Promise<void> {
-		await this._personRepository.update(id, person);
+	async update(id: number, person: Person): Promise<Object> {
+		const property = await this._personRepository.findOne({
+			where: { id },
+		});
+
+		if (property) {
+			return await  this._personRepository.save({
+				...property, // existing fields
+				...person, // updated fields
+			});
+		} else return new InternalServerErrorException()
 	}
 
 	async delete(id: number): Promise<void> {
@@ -80,8 +92,8 @@ export class PersonService {
 		await this._personRepository.save(personExist);
 
 		return {
-			"statusCode": 200,
-			"message": "Role added."
+			statusCode: 200,
+			message: "Role added.",
 		};
 	}
 }

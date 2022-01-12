@@ -15,7 +15,7 @@ export class Person extends BaseEntity {
 	@PrimaryGeneratedColumn("increment")
 	id: number;
 
-    @Column({ type: "varchar", unique: true, nullable: false })
+    @Column({ type: "varchar", nullable: false })
 	displayname: string;
 
 	@Column({ type: "varchar", unique: true, length: 25, nullable: false })

@@ -9,6 +9,7 @@ import { ConfigModule } from "src/config/config.module";
 import { ConfigService } from "src/config/config.service";
 import { Configuration } from "src/config/config.keys";
 import { JwtStrategy } from "./strategies/jwt.strategy";
+import { MulterModule } from "@nestjs/platform-express";
 
 @Module({
 	imports: [
@@ -27,7 +28,7 @@ import { JwtStrategy } from "./strategies/jwt.strategy";
 					},
 				};
 			},
-		}),
+		})
 	],
 	controllers: [AuthController],
 	providers: [AuthService, ConfigService, JwtStrategy],

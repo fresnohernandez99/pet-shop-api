@@ -9,6 +9,8 @@ export class GetPersonDto {
 	@IsNotEmpty()
 	email: string;
 
+	photo: string;
+
 	@IsNotEmpty()
 	roles: Role[];
 
@@ -18,5 +20,7 @@ export class GetPersonDto {
 		this.email = person.email;
 
 		this.roles = person.roles;
+
+		this.photo = person.photo;
 	}
 }

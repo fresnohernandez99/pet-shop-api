@@ -30,7 +30,6 @@ export class AuthService {
 		if (personExists) {
 			throw new ConflictException("username or email already exists");
 		}
-
 		return this._authRepository.signup(signupDto);
 	}
 

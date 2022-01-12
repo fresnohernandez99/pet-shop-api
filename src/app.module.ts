@@ -8,11 +8,20 @@ import { DatabaseModule } from "./database/database.module";
 import { ConfigService } from "./config/config.service";
 import { Configuration } from "./config/config.keys";
 import { PersonModule } from "./modules/person/person.module";
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { join } from "path";
 
 @Module({
 	controllers: [AppController],
 	providers: [AppService],
-	imports: [ConfigModule, DatabaseModule, PersonModule, RoleModule, AuthModule,],
+	imports: [
+		ConfigModule,
+		DatabaseModule,
+		PersonModule,
+		RoleModule,
+		AuthModule,
+
+	],
 })
 export class AppModule {
 	static port: number | string;
