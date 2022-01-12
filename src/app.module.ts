@@ -10,6 +10,8 @@ import { Configuration } from "./config/config.keys";
 import { PersonModule } from "./modules/person/person.module";
 import { ShopModule } from "./modules/shop/shop.module";
 import { BreedModule } from "./modules/breed/breed.module";
+import { AnimalModule } from './modules/animal/animal.module';
+import { PetModule } from './modules/pet/pet.module';
 
 @Module({
 	controllers: [AppController],
@@ -22,6 +24,8 @@ import { BreedModule } from "./modules/breed/breed.module";
 		AuthModule,
 		BreedModule,
 		ShopModule,
+		AnimalModule,
+		PetModule,
 
 	],
 })

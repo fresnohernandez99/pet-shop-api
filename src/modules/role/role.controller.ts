@@ -8,6 +8,8 @@ import {
 	Delete,
 	ParseIntPipe,
 	UseGuards,
+	ValidationPipe,
+	UsePipes,
 } from "@nestjs/common";
 import { RoleService } from "./role.service";
 import { Role } from "./role.entity";
@@ -35,6 +37,7 @@ export class RoleController {
 	@Post()
 	@Roles(RoleType.ADMIN)
 	@UseGuards(AuthGuard(), RoleGuard)
+	@UsePipes(ValidationPipe)
 	async createRole(@Body() role: Role): Promise<Role> {
 		const createdRole = await this._roleService.create(role);
 		return createdRole;
@@ -43,6 +46,7 @@ export class RoleController {
 	@Patch(":id")
 	@Roles(RoleType.ADMIN)
 	@UseGuards(AuthGuard(), RoleGuard)
+	@UsePipes(ValidationPipe)
 	async updateRole(@Param("id", ParseIntPipe) id: number, @Body() role: Role) {
 		await this._roleService.update(id, role);
 		return {

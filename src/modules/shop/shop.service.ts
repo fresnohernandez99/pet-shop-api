@@ -45,7 +45,7 @@ export class ShopService {
 				...property, // existing fields
 				...shop, // updated fields
 			});
-		} else return new InternalServerErrorException()
+		} else throw new BadRequestException()
 	}
 
 	async delete(id: number): Promise<void> {

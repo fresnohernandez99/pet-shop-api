@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards, UseInterceptors, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Roles } from '../role/decorators/role.decorator';
 import { RoleGuard } from '../role/guards/role.guard';
@@ -24,13 +24,14 @@ export class BreedController {
 		@Param("id", ParseIntPipe)
 		id: number
 	): Promise<Breed> {
-		const user = await this._service.get(id);
-		return user;
+		const breed = await this._service.get(id);
+		return breed;
 	}
 
     @Post()
 	@Roles(RoleType.ADMIN)
 	@UseGuards(AuthGuard(), RoleGuard)
+	@UsePipes(ValidationPipe)
 	async createBreed(
 		@Body() breed: Breed,
 	) {
@@ -40,6 +41,7 @@ export class BreedController {
 	@Patch(":id")
 	@Roles(RoleType.ADMIN)
 	@UseGuards(AuthGuard(), RoleGuard)
+	@UsePipes(ValidationPipe)
 	async updateBreed(
 		@Param("id", ParseIntPipe) id: number,
 		@Body() breed: Breed,

@@ -45,7 +45,7 @@ export class BreedService {
 				...property, // existing fields
 				...breed, // updated fields
 			});
-		} else return new InternalServerErrorException()
+		} else throw new BadRequestException()
 	}
 
 	async delete(id: number): Promise<void> {

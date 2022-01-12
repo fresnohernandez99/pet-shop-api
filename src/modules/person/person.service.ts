@@ -62,7 +62,7 @@ export class PersonService {
 				...property, // existing fields
 				...person, // updated fields
 			});
-		} else return new InternalServerErrorException()
+		} else throw new BadRequestException()
 	}
 
 	async delete(id: number): Promise<void> {

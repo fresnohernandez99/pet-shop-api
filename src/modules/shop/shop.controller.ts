@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards, UseInterceptors, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Roles } from '../role/decorators/role.decorator';
 import { RoleGuard } from '../role/guards/role.guard';
@@ -20,6 +20,7 @@ export class ShopController {
 	@Get(":id")
 	@Roles(RoleType.ADMIN)
 	@UseGuards(AuthGuard(), RoleGuard)
+	@UsePipes(ValidationPipe)
 	async getShop(
 		@Param("id", ParseIntPipe)
 		id: number
@@ -31,6 +32,7 @@ export class ShopController {
     @Post()
 	@Roles(RoleType.ADMIN)
 	@UseGuards(AuthGuard(), RoleGuard)
+	@UsePipes(ValidationPipe)
 	async createShop(
 		@Body() shop: Shop,
 	) {
@@ -40,6 +42,7 @@ export class ShopController {
 	@Patch(":id")
 	@Roles(RoleType.ADMIN)
 	@UseGuards(AuthGuard(), RoleGuard)
+	@UsePipes(ValidationPipe)
 	async updateShop(
 		@Param("id", ParseIntPipe) id: number,
 		@Body() shop: Shop,
@@ -50,6 +53,7 @@ export class ShopController {
 	@Delete(":id")
 	@Roles(RoleType.ADMIN)
 	@UseGuards(AuthGuard(), RoleGuard)
+	@UsePipes(ValidationPipe)
 	async deleteShop(
 		@Param("id", ParseIntPipe)
 		id: number
