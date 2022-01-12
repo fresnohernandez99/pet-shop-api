@@ -6,6 +6,7 @@
   "port": 5432,
   "database": "petshop",
   "entities": ["dist/**/*.entity.js"],
+  "synchronize": true,
   "migrations": ["src/database/migrations/*{.ts,.js}"],
   "cli": {
     "migrationsDir": "src/database/migrations"

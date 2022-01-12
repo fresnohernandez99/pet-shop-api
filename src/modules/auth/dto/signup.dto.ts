@@ -17,6 +17,5 @@ export class SignupDto {
   @IsString()
   password: string;
 
-  @IsString()
   photo: string;
 }

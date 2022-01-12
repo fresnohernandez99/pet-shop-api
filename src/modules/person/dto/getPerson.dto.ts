@@ -1,10 +1,8 @@
 import { IsNotEmpty } from "class-validator";
 import { Role } from "src/modules/role/role.entity";
+import { Person } from "../person.entity";
 
-export class PersonDto {
-	@IsNotEmpty()
-	id: number;
-
+export class GetPersonDto {
 	@IsNotEmpty()
 	username: string;
 
@@ -13,4 +11,12 @@ export class PersonDto {
 
 	@IsNotEmpty()
 	roles: Role[];
+
+	constructor(person: Person){
+		this.username = person.username;
+
+		this.email = person.email;
+
+		this.roles = person.roles;
+	}
 }

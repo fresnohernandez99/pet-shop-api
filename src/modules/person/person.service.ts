@@ -7,6 +7,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { getConnection } from "typeorm";
 import { Role } from "../role/role.entity";
 import { RoleRepository } from "../role/role.repository";
+import { RoleType } from "../role/roletype.enum";
 import { Person } from "./person.entity";
 import { PersonRepository } from "./person.repository";
 
@@ -41,7 +42,7 @@ export class PersonService {
 
 	async create(person: Person): Promise<Person> {
 		const repo = await getConnection().getRepository(Role);
-		const defaultRole = await repo.findOne({ where: { name: "GENERAL" } });
+		const defaultRole = await repo.findOne({ where: { name: RoleType.GENERAL } });
 		person.roles = [defaultRole];
 
 		const savedPerson: Person = await this._personRepository.save(person);
@@ -78,6 +79,9 @@ export class PersonService {
 		personExist.roles.push(roleExist);
 		await this._personRepository.save(personExist);
 
-		return true;
+		return {
+			"statusCode": 200,
+			"message": "Role added."
+		};
 	}
 }

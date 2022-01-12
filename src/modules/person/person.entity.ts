@@ -10,7 +10,7 @@ import {
 } from "typeorm";
 import { Role } from "../role/role.entity";
 
-@Entity("person")
+@Entity()
 export class Person extends BaseEntity {
 	@PrimaryGeneratedColumn("increment")
 	id: number;
@@ -27,7 +27,7 @@ export class Person extends BaseEntity {
 	@Column({ type: "varchar", nullable: false })
 	password: string;
 
-    @Column({ type: "varchar", nullable: false })
+    @Column({ type: "varchar", nullable: true })
 	photo: string;
 
 	@ManyToMany(type => Role, role => role.people, { eager: true })

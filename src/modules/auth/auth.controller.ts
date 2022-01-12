@@ -14,7 +14,7 @@ export class AuthController {
 
 	@Post("/signup")
 	@UsePipes(ValidationPipe)
-	async signup(@Body() signupDto: SignupDto): Promise<void> {
+	async signup(@Body() signupDto: SignupDto): Promise<Object> {
 		return this._authService.signup(signupDto);
 	}
 

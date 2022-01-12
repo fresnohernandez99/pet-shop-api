@@ -31,6 +31,10 @@ export class RoleService {
 	}
 
 	async create(role: Role): Promise<Role> {
+		if (!role.name || !role.description) {
+			throw new BadRequestException("role must have data");
+		}
+		
 		const savedRole: Role = await this._roleRepository.save(role);
 		return savedRole;
 	}

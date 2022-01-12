@@ -12,7 +12,7 @@ import { PersonModule } from "./modules/person/person.module";
 @Module({
 	controllers: [AppController],
 	providers: [AppService],
-	imports: [ConfigModule, DatabaseModule, PersonModule, RoleModule, AuthModule],
+	imports: [ConfigModule, DatabaseModule, PersonModule, RoleModule, AuthModule,],
 })
 export class AppModule {
 	static port: number | string;

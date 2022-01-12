@@ -21,7 +21,7 @@ export class AuthService {
 		private readonly _jwtService: JwtService
 	) {}
 
-	async signup(signupDto: SignupDto): Promise<void> {
+	async signup(signupDto: SignupDto): Promise<Object> {
 		const { username, email } = signupDto;
 		const personExists = await this._authRepository.findOne({
 			where: [{ username }, { email }],
@@ -58,6 +58,8 @@ export class AuthService {
 			roles: person.roles.map((r) => r.name as RoleType),
 		};
 
+		console.log("Login: " + JSON.stringify(payload));
+		
 		const token = await this._jwtService.sign(payload);
 
 		return { token };

@@ -10,7 +10,7 @@ import {
 } from "typeorm";
 import { Person } from "../person/person.entity";
 
-@Entity("roles")
+@Entity()
 export class Role extends BaseEntity {
 	@PrimaryGeneratedColumn("increment")
 	id: number;

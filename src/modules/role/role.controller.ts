@@ -7,9 +7,14 @@ import {
 	Patch,
 	Delete,
 	ParseIntPipe,
+	UseGuards,
 } from "@nestjs/common";
 import { RoleService } from "./role.service";
 import { Role } from "./role.entity";
+import { Roles } from "./decorators/role.decorator";
+import { AuthGuard } from "@nestjs/passport";
+import { RoleGuard } from "./guards/role.guard";
+import { RoleType } from "./roletype.enum";
 
 @Controller("roles")
 export class RoleController {
@@ -28,20 +33,32 @@ export class RoleController {
 	}
 
 	@Post()
+	@Roles(RoleType.ADMIN)
+	@UseGuards(AuthGuard(), RoleGuard)
 	async createRole(@Body() role: Role): Promise<Role> {
 		const createdRole = await this._roleService.create(role);
 		return createdRole;
 	}
 
 	@Patch(":id")
+	@Roles(RoleType.ADMIN)
+	@UseGuards(AuthGuard(), RoleGuard)
 	async updateRole(@Param("id", ParseIntPipe) id: number, @Body() role: Role) {
 		await this._roleService.update(id, role);
-		return true;
+		return {
+			"statusCode": 204,
+			"message": "You have updated a role."
+		};
 	}
 
 	@Delete(":id")
+	@Roles(RoleType.ADMIN)
+	@UseGuards(AuthGuard(), RoleGuard)
 	async deleteRole(@Param("id", ParseIntPipe) id: number) {
 		await this._roleService.delete(id);
-		return true;
+		return {
+			"statusCode": 204,
+			"message": "You have deleted a role."
+		};
 	}
 }
