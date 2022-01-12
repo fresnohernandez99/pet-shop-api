@@ -1,9 +1,19 @@
-import { Module } from '@nestjs/common';
-import { PersonService } from './person.service';
-import { PersonController } from './person.controller';
+import { Module } from "@nestjs/common";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { SharedModule } from "src/shared/shared.module";
+import { AuthModule } from "../auth/auth.module";
+import { RoleRepository } from "../role/role.repository";
+import { PersonController } from "./person.controller";
+import { PersonRepository } from "./person.repository";
+import { PersonService } from "./person.service";
 
 @Module({
-  providers: [PersonService],
-  controllers: [PersonController]
+	imports: [
+		TypeOrmModule.forFeature([PersonRepository, RoleRepository]),
+		SharedModule,
+		AuthModule,
+	],
+	providers: [PersonService],
+	controllers: [PersonController],
 })
 export class PersonModule {}

@@ -3,7 +3,12 @@ import {
 	Entity,
 	PrimaryGeneratedColumn,
 	Column,
+	CreateDateColumn,
+	UpdateDateColumn,
+	ManyToMany,
+	JoinTable,
 } from "typeorm";
+import { Role } from "../role/role.entity";
 
 @Entity("person")
 export class Person extends BaseEntity {
@@ -24,4 +29,14 @@ export class Person extends BaseEntity {
 
     @Column({ type: "varchar", nullable: false })
 	photo: string;
+
+	@ManyToMany(type => Role, role => role.people, { eager: true })
+	@JoinTable({ name: 'person_roles' })
+	roles: Role[];
+
+	@CreateDateColumn({ type: "timestamp", name: "created_at" })
+	createdAt: Date;
+
+	@UpdateDateColumn({ type: "timestamp", name: "updated_at" })
+	updatedAt: Date;
 }
