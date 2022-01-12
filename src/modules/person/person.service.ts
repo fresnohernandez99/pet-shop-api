@@ -26,19 +26,19 @@ export class PersonService {
 			throw new BadRequestException("id must be sent");
 		}
 
-		const Person: Person = await this._personRepository.findOne(id);
+		const person: Person = await this._personRepository.findOne(id);
 
-		if (!Person) {
+		if (!person) {
 			throw new NotFoundException();
 		}
 
-		return Person;
+		return person;
 	}
 
 	async getAll(): Promise<Person[]> {
-		const Persons: Person[] = await this._personRepository.find();
+		const people: Person[] = await this._personRepository.find();
 
-		return Persons;
+		return people;
 	}
 
 	async create(person: Person): Promise<Person> {
@@ -66,9 +66,9 @@ export class PersonService {
 	}
 
 	async delete(id: number): Promise<void> {
-		const PersonExist = await this._personRepository.findOne(id);
+		const personExist = await this._personRepository.findOne(id);
 
-		if (!PersonExist) {
+		if (!personExist) {
 			throw new NotFoundException();
 		}
 

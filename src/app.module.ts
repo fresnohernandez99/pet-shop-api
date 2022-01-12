@@ -8,8 +8,8 @@ import { DatabaseModule } from "./database/database.module";
 import { ConfigService } from "./config/config.service";
 import { Configuration } from "./config/config.keys";
 import { PersonModule } from "./modules/person/person.module";
-import { ServeStaticModule } from "@nestjs/serve-static";
-import { join } from "path";
+import { ShopModule } from "./modules/shop/shop.module";
+import { BreedModule } from "./modules/breed/breed.module";
 
 @Module({
 	controllers: [AppController],
@@ -20,6 +20,8 @@ import { join } from "path";
 		PersonModule,
 		RoleModule,
 		AuthModule,
+		BreedModule,
+		ShopModule,
 
 	],
 })

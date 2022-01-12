@@ -9,7 +9,6 @@ import { ConfigModule } from "src/config/config.module";
 import { ConfigService } from "src/config/config.service";
 import { Configuration } from "src/config/config.keys";
 import { JwtStrategy } from "./strategies/jwt.strategy";
-import { MulterModule } from "@nestjs/platform-express";
 
 @Module({
 	imports: [
@@ -24,7 +23,7 @@ import { MulterModule } from "@nestjs/platform-express";
 				return {
 					secret: config.get(Configuration.JWT_SECRET),
 					signOptions: {
-						expiresIn: 10000,
+						expiresIn: 100000,
 					},
 				};
 			},

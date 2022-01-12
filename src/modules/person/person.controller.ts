@@ -23,10 +23,6 @@ import { RoleType } from "../role/roletype.enum";
 import { GetPersonDto } from "./dto/getPerson.dto";
 import { Person } from "./person.entity";
 import { PersonService } from "./person.service";
-import { existsSync, mkdirSync } from "fs";
-import { extname } from "path";
-import * as path from "path";
-import { v4 as uuid } from "uuid";
 import { storage } from "../auth/auth.controller";
 
 @Controller("person")
@@ -67,8 +63,6 @@ export class PersonController {
 
 		if (file) person.photo = file.filename;
 
-		console.log(person);
-		
 		return await this._personService.update(id, person);
 	}
 
