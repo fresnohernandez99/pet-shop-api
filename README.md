@@ -44,6 +44,7 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+## Create DB using /sql/init-database.sql
 
 ## Access
 http://localhost/api -> regular endpoints

@@ -1,0 +1,1097 @@
+{
+	"info": {
+		"_postman_id": "954287b1-578e-4d4c-8bfd-fae5e4f08c23",
+		"name": "Pet-Shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "person",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/person",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"person"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/person/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"person",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "displayname",
+									"value": "Nombre de admin cammmi",
+									"type": "default"
+								},
+								{
+									"key": "profile",
+									"type": "file",
+									"src": "/Users/fresnohdez/Downloads/IMG_8005.JPG"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/person/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"person",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/person/15",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"person",
+								"15"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profile",
+									"type": "file",
+									"src": "/Users/fresnohdez/Downloads/IMG_8005.JPG"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "default"
+								},
+								{
+									"key": "displayname",
+									"value": "Admin rodriguez",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "admin@mail.com",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/auth/signup",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"pass\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/auth/signin",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "roles",
+			"item": [
+				{
+					"name": "create-role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"testRole1\",\n    \"description\": \"a test role decription\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/roles",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-role",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/roles/5",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"roles",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/roles/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"roles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "extra",
+			"item": [
+				{
+					"name": "root/api",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{root}}:{{port}}/api",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "shop",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/shop",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"shop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/shop/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"shop",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"displayname\": \"La tienda de perros\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/shop/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"shop",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/shop/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"shop",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"displayname\" : \"Tienda de perros\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/shop",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"shop"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "breed",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/breed",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"breed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/breed/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"breed",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"displayname\": \"perro\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/breed/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"breed",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/breed/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"breed",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"displayname\" : \"perro\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/breed",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"breed"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "animal",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/animal",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"animal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByShop",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/animal/shop/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"animal",
+								"shop",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByBreed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/animal/breed/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"animal",
+								"breed",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByFiltered",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/animal/filtered/1/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"animal",
+								"filtered",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/breed/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"breed",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"price\": 12.9,\n    \"amount\": 1,\n    \"shop\": 1,\n    \"breed\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/animal",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"animal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"price\": 11.9,\n    \"amount\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/animal/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"animal",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/breed/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"breed",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addAnimalsToAmount",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/animal/add/2/3",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"animal",
+								"add",
+								"2",
+								"3"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pet",
+			"item": [
+				{
+					"name": "getByOwner",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/pet/1",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"pet",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buyPet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"money\": 20,\n    \"displayname\": \"Canijo\",\n    \"animal\" : {\n        \"id\": 1,\n        \"price\": \"12.9\",\n        \"amount\": 1,\n        \"breed\": {\n            \"id\": 1,\n            \"displayname\": \"perro\"\n        },\n        \"shop\": {\n            \"id\": 1,\n            \"displayname\": \"Tienda de perros\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}:{{port}}/api/pet",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "images",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{root}}:{{port}}/api/images/IMG_800531eba97e-adda-4f8e-98e4-6ffd69ca1fc4.JPG",
+							"host": [
+								"{{root}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"images",
+								"IMG_800531eba97e-adda-4f8e-98e4-6ffd69ca1fc4.JPG"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
