@@ -37,7 +37,9 @@ export class AuthController {
 	))
 	@UsePipes(ValidationPipe)
 	async signup(@UploadedFile() file: Express.Multer.File, @Body() signupDto: SignupDto): Promise<Object> {
-		signupDto.photo = file.filename;
+		if (file) {
+			signupDto.photo = file.filename;
+		}
 		return this._authService.signup(signupDto);
 	}
 
